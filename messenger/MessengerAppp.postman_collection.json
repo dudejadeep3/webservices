@@ -1,0 +1,225 @@
+{
+	"variables": [],
+	"info": {
+		"name": "MessengerAppp",
+		"_postman_id": "e73e892c-8f8e-adff-ea24-3547e7589575",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Message",
+			"description": "All the apis related to Message",
+			"item": [
+				{
+					"name": "http://localhost:8080/messenger/webapi/messages",
+					"request": {
+						"url": {
+							"raw": "http://localhost:8080/messenger/webapi/messages?start=0&size=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"messenger",
+								"webapi",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "size",
+									"value": "2",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Gets all the messages"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/messages/1",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/messages/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Getting message based on message id"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/messages",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/messages",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"author\": \"author3\",\n        \"created\": \"2017-12-02T18:31:54.066\",\n        \"message\": \"Hello World New Message!\"\n    }"
+						},
+						"description": "create a new message"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/messages/1",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/messages/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"author\": \"author1\",\n    \"created\": \"2017-12-02T18:56:17.154\",\n    \"message\": \"Hello World updated for fist id!\"\n}"
+						},
+						"description": "update the message based on the id"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/messages/3",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/messages/3",
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"description": "Delete a message"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:8080/messenger/webapi/profiles/",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/profiles/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Getting all the profiles in the system"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/profiles",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/profiles",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"firstName\": \"Admin\",\n        \"id\": 3,\n        \"lastName\": \" User\",\n        \"profileName\": \"admin\"\n}"
+						},
+						"description": "Creates a new profile"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/profiles/admin",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/profiles/admin",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Gets a particular profile"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/profiles/admin",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/profiles/admin",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n        \"firstName\": \"Admin updated\",\n        \"id\": 3,\n        \"lastName\": \"User\",\n        \"profileName\": \"admin\"\n}"
+						},
+						"description": "updates the profile for the user"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/profiles/admin",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/profiles/admin",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "deletes the profile"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InjectDemo",
+			"description": "\n",
+			"item": [
+				{
+					"name": "http://localhost:8080/messenger/webapi/injectdemo/annotations;param=value",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/injectdemo/annotations;param=value",
+						"method": "GET",
+						"header": [
+							{
+								"key": "customHeaderParam",
+								"value": "200",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Getting Parameter from different ways: matrix parameter, headers, cookies"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
