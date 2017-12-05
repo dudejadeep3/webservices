@@ -218,6 +218,65 @@
 						"description": "Getting Parameter from different ways: matrix parameter, headers, cookies"
 					},
 					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/injectdemo/context",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/injectdemo/context",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get the resource using @Context annotation"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"description": "All the URIs for the comment resource\n",
+			"item": [
+				{
+					"name": "http://localhost:8080/messenger/webapi/messages/1/comments",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/messages/1/comments",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all the comments associated with a particular message"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/messages/1/comments/23",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/messages/1/comments/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get a particular comment associated with the message"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/messenger/webapi/messages/1/comments/",
+					"request": {
+						"url": "http://localhost:8080/messenger/webapi/messages/1/comments/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"message\":\"first comment\",\n\t\"created\": \"2017-12-05T18:31:54.066\",\n\t\"author\":\"author1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		}
