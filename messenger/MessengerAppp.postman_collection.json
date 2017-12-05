@@ -12,7 +12,7 @@
 			"description": "All the apis related to Message",
 			"item": [
 				{
-					"name": "http://localhost:8080/messenger/webapi/messages",
+					"name": "Get All Messages",
 					"request": {
 						"url": {
 							"raw": "http://localhost:8080/messenger/webapi/messages?start=0&size=2",
@@ -53,7 +53,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/messages/1",
+					"name": "Get Message",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/messages/1",
 						"method": "GET",
@@ -64,7 +64,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/messages",
+					"name": "Create Message",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/messages",
 						"method": "POST",
@@ -84,7 +84,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/messages/1",
+					"name": "Update Message",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/messages/1",
 						"method": "PUT",
@@ -104,7 +104,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/messages/3",
+					"name": "Delete Message",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/messages/3",
 						"method": "DELETE",
@@ -121,7 +121,7 @@
 			"description": "",
 			"item": [
 				{
-					"name": "http://localhost:8080/messenger/webapi/profiles/",
+					"name": "Get All Profiles",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/profiles/",
 						"method": "GET",
@@ -132,7 +132,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/profiles",
+					"name": "Add Profile",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/profiles",
 						"method": "POST",
@@ -152,7 +152,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/profiles/admin",
+					"name": "Get Profile",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/profiles/admin",
 						"method": "GET",
@@ -163,7 +163,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/profiles/admin",
+					"name": "Update Profile",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/profiles/admin",
 						"method": "PUT",
@@ -183,7 +183,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/profiles/admin",
+					"name": "Delete Profile",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/profiles/admin",
 						"method": "DELETE",
@@ -203,7 +203,7 @@
 			"description": "\n",
 			"item": [
 				{
-					"name": "http://localhost:8080/messenger/webapi/injectdemo/annotations;param=value",
+					"name": "Matrix Paramter/ Heardes/ Cookies Example",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/injectdemo/annotations;param=value",
 						"method": "GET",
@@ -220,7 +220,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/injectdemo/context",
+					"name": "Context Annotation Example",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/injectdemo/context",
 						"method": "GET",
@@ -237,7 +237,7 @@
 			"description": "All the URIs for the comment resource\n",
 			"item": [
 				{
-					"name": "http://localhost:8080/messenger/webapi/messages/1/comments",
+					"name": "Get all comments for a message",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/messages/1/comments",
 						"method": "GET",
@@ -248,7 +248,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/messages/1/comments/23",
+					"name": "Get particular comment for a message",
 					"request": {
 						"url": "http://localhost:8080/messenger/webapi/messages/1/comments/1",
 						"method": "GET",
@@ -259,9 +259,9 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8080/messenger/webapi/messages/1/comments/",
+					"name": "Create a comment for a message",
 					"request": {
-						"url": "http://localhost:8080/messenger/webapi/messages/1/comments/",
+						"url": "http://localhost:8080/messenger/webapi/messages/1/comments",
 						"method": "POST",
 						"header": [
 							{

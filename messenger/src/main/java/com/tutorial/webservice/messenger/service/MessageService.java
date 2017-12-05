@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.tutorial.webservice.messenger.database.DatabaseClass;
+import com.tutorial.webservice.messenger.exception.DataNotFoundException;
 import com.tutorial.webservice.messenger.model.Message;
 
 public class MessageService {
@@ -41,7 +42,13 @@ public class MessageService {
 	}
 
 	public Message getMessage(Long id) {
-		return messages.get(id);
+		Message message = messages.get(id);
+		if(message == null){
+			throw new DataNotFoundException("Message with id "+id+ " not found");
+		}else
+		{
+			return message;
+		}
 	}
 
 	public Message addMessage(Message message) {

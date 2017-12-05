@@ -23,64 +23,98 @@ import com.tutorial.webservice.messenger.resources.bean.MessageFilterBean;
 import com.tutorial.webservice.messenger.service.MessageService;
 
 @Path("/messages")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class MessageResource {
 
 	private MessageService messageService = new MessageService();
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Message> getMessages(@BeanParam MessageFilterBean messageFilter) {
-		if(messageFilter.getYear()>0){
+	public List<Message> getJSONMessages(@BeanParam MessageFilterBean messageFilter) {
+		System.out.println("JSON Method called");
+		if (messageFilter.getYear() > 0) {
 			return messageService.getAllMessgesForYear(messageFilter.getYear());
 		}
-		if(messageFilter.getStart()>=0 && messageFilter.getSize()>0){
+		if (messageFilter.getStart() >= 0 && messageFilter.getSize() > 0) {
+			return messageService.getAllMessagesPaginated(messageFilter.getStart(), messageFilter.getSize());
+		}
+		return messageService.getAllMessages();
+	}
+	
+	@GET
+	@Produces(MediaType.TEXT_XML)
+	public List<Message> getXmlMessages(@BeanParam MessageFilterBean messageFilter) {
+		System.out.println("XML Method called");
+		if (messageFilter.getYear() > 0) {
+			return messageService.getAllMessgesForYear(messageFilter.getYear());
+		}
+		if (messageFilter.getStart() >= 0 && messageFilter.getSize() > 0) {
 			return messageService.getAllMessagesPaginated(messageFilter.getStart(), messageFilter.getSize());
 		}
 		return messageService.getAllMessages();
 	}
 
 	@Path("/{messageId}")
-	@Produces(MediaType.APPLICATION_JSON)
 	@GET
-	public Message getMessageFromId(@PathParam("messageId") long messageId) {
-		return messageService.getMessage(messageId);
+	public Message getMessageFromId(@PathParam("messageId") long messageId, @Context UriInfo uriInfo) {
+		Message message = messageService.getMessage(messageId);
+		String uri = getURIForSelf(uriInfo, message);
+		message.addLink(uri, "self");
+		message.addLink(getURIForProfile(uriInfo, message), "profile");
+		message.addLink(getURIForComments(uriInfo, message), "comments");
+		return message;
+	}
+
+	private String getURIForComments(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder().path(MessageResource.class)
+				.path(MessageResource.class, "getCommentResource").path(CommentResource.class)
+				.resolveTemplate("messageId", message.getId()).build().toString();
+		return uri;
+	}
+
+	private String getURIForProfile(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder().path(ProfileResource.class).path(message.getAuthor()).build()
+				.toString();
+		return uri;
+	}
+
+	private String getURIForSelf(UriInfo uriInfo, Message message) {
+		String uri = uriInfo.getBaseUriBuilder().path(MessageResource.class).path(Long.toString(message.getId()))
+				.build().toString();
+		return uri;
 	}
 
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addMessage(Message message, @Context UriInfo uriInfo) throws URISyntaxException {
-		//return messageService.addMessage(message);
+		// return messageService.addMessage(message);
 		Message newMessage = messageService.addMessage(message);
-		//return Response.status(Status.CREATED).entity(newMessage).build();
-		
+		// return Response.status(Status.CREATED).entity(newMessage).build();
+
 		String newId = String.valueOf(newMessage.getId());
-		URI uri =uriInfo.getAbsolutePathBuilder().path(newId).build();
+		URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
 		return Response.created(uri).entity(newMessage).build();
 	}
-	
+
 	@PUT
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/{messageId}")
-	public Message udpateMessage(Message message, @PathParam("messageId") long messageId){
+	public Message udpateMessage(Message message, @PathParam("messageId") long messageId) {
 		message.setId(messageId);
 		return messageService.updateMessage(message);
 	}
 
 	@DELETE
-	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{messageId}")
-	public Message removeMessage(@PathParam("messageId") long id){
+	public Message removeMessage(@PathParam("messageId") long id) {
 		return messageService.removeMessage(id);
 	}
-	
+
 	/**
-	 *  
+	 * 
 	 * @return the comment resource as it is a sub resource for message.
 	 */
 	@Path("/{messageId}/comments")
-	public CommentResource getCommentResource(){
+	public CommentResource getCommentResource() {
 		return new CommentResource();
 	}
 }
