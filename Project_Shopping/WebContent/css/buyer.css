@@ -1,0 +1,16 @@
+#priceRange{
+	display:none;
+}
+#seller{
+	padding-top:8px;
+	margin:13px;
+}
+
+#resultTable,#noItem{
+	display:none;
+}
+
+#emptyValue{
+	display:none;
+	color: red;
+}

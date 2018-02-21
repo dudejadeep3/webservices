@@ -1,0 +1,16 @@
+.login{
+	margin-top:230px;
+}
+.loginHeading{
+	margin-left: 8px;
+}
+
+.loginForm{
+	background: silver;
+	padding:20px;
+	border-radius: 10px;
+}
+.errorMessage{
+	margin-left: 8px;
+	color: red;
+}
